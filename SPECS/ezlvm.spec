@@ -29,7 +29,7 @@ Requires: ocaml-cmdliner-devel
 Requires: ocaml-uri-devel
 Requires: ocamlscript
 Requires: ocaml-ounit-devel
-Requires: xapi-storage-datapath-plugins
+Requires: xapi-storage-plugins
 
 %description
 Simple LVM storage adapter for xapi
@@ -54,6 +54,9 @@ done
 %{_libexecdir}/xapi-storage-script/volume/org.xen.xapi.storage.ezlvm/*
 
 %changelog
+* Tue Feb 23 2016 David Scott <dave.scott@citrix.com> - 0.6
+- Add dependency on xapi-storage-plugins
+
 * Tue Sep 15 2015 David Scott <dave.scott@citrix.com> - 0.5.3-1
 - Update to 0.5.3
 - Add dependency on xapi-storage-datapath-plugins

@@ -1,9 +1,9 @@
-Name:           xapi-storage-datapath-plugins
+Name:           xapi-storage-plugins
 Version:        0.2.1
 Release:        2%{?dist}
 Summary:        Storage datapath plugins for the xapi toolstack
 License:        LGPL
-URL:            https://github.com/xapi-project/xapi-storage-datapath-plugins
+URL:            https://github.com/xapi-project/xapi-storage-plugins
 Source0:        https://github.com/xapi-project/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Requires:       xapi-storage
 

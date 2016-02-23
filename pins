@@ -46,6 +46,9 @@
   "SPECS/xapi-storage-script.spec": {
     "0": "/repos/xapi-storage-script#HEAD"
   },
+  "SPECS/xapi-storage-script.spec": {
+    "0": "/repos/xapi-storage-plugins#HEAD"
+  },
   "SPECS/xapi-storage.spec": {
     "0": "/repos/xapi-storage#HEAD"
   },
