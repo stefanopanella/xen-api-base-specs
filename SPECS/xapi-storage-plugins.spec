@@ -8,7 +8,7 @@ Source0:        https://github.com/xapi-project/%{name}/archive/v%{version}/%{na
 Requires:       xapi-storage
 
 %description
-Storage datapath plugins for the xapi toolstack.
+Storage plugins for the xapi toolstack.
 
 %prep
 %setup -q
@@ -16,7 +16,7 @@ Storage datapath plugins for the xapi toolstack.
 %build
 
 %install
-DESTDIR=%{buildroot} SCRIPTDIR=%{_libexecdir}/xapi-storage-script/ PYTHONDIR=/usr/lib/python2.7/site-packages/xapi/storage/lib make install
+DESTDIR=%{buildroot} SCRIPTDIR=%{_libexecdir}/xapi-storage-script/ PYTHONDIR=/usr/lib/python2.7/site-packages/xapi/storage/lib PLUGINSDIR=%{_sysconfdir}/xapi.d/plugins make install
 
 %files
 %doc README.md LICENSE
@@ -28,6 +28,7 @@ DESTDIR=%{buildroot} SCRIPTDIR=%{_libexecdir}/xapi-storage-script/ PYTHONDIR=/us
 %{_libexecdir}/xapi-storage-script/volume/org.xen.xapi.storage.gfs2/*
 %{_libexecdir}/xapi-storage-script/volume/org.xen.xapi.storage.lvm/*
 /usr/lib/python2.7/site-packages/xapi/storage/lib/*.py*
+%{_sysconfdir}/xapi.d/plugins/*
 
 %changelog
 * Wed Sep 30 2015 Robert Breker <robert.breker@citrix.com> - 0.2.1-2
