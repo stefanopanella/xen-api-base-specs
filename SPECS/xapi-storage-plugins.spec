@@ -16,7 +16,7 @@ Storage plugins for the xapi toolstack.
 %build
 
 %install
-DESTDIR=%{buildroot} SCRIPTDIR=%{_libexecdir}/xapi-storage-script/ PYTHONDIR=/usr/lib/python2.7/site-packages/xapi/storage/lib PLUGINSDIR=%{_sysconfdir}/xapi.d/plugins make install
+DESTDIR=%{buildroot} SCRIPTDIR=%{_libexecdir}/xapi-storage-script/ PYTHONDIR=/usr/lib/python2.7/site-packages/xapi/storage/common PLUGINSDIR=%{_sysconfdir}/xapi.d/plugins make install
 
 %files
 %doc README.md LICENSE
@@ -27,7 +27,7 @@ DESTDIR=%{buildroot} SCRIPTDIR=%{_libexecdir}/xapi-storage-script/ PYTHONDIR=/us
 %{_libexecdir}/xapi-storage-script/datapath/raw+block/*
 %{_libexecdir}/xapi-storage-script/volume/org.xen.xapi.storage.gfs2/*
 %{_libexecdir}/xapi-storage-script/volume/org.xen.xapi.storage.lvm/*
-/usr/lib/python2.7/site-packages/xapi/storage/lib/*.py*
+/usr/lib/python2.7/site-packages/xapi/storage/common/*.py*
 %{_sysconfdir}/xapi.d/plugins/*
 
 %changelog
