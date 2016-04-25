@@ -1,0 +1,190 @@
+From 95ddb6ef6593007094db3a74ce40a93fd76bae63 Mon Sep 17 00:00:00 2001
+From: Gabriel Scherer <gabriel.scherer@gmail.com>
+Date: Mon, 11 Apr 2016 15:50:32 -0400
+Subject: [PATCH] PR#7220: fix a memory leak of backtrace buffer in systhreads
+ code
+
+The following reproduction code by Rob Hoes consumes all the memory of a machine:
+
+  let _ =
+   Printexc.record_backtrace true;
+   let rec loop () =
+     let t = Thread.create (fun () ->
+       try
+         raise Not_found
+       with Not_found ->
+         ()
+     ) () in
+     Thread.join t;
+     loop ()
+   in
+   loop ()
+
+The following is my understanding of what is happening before the current patch.
+
+caml_thread_{enter,leave}_blocking_section follow a bracketing discipline where
+- thread_enter_blocking_section will save global resources into
+  a thread-specific storage space (the caml_thread_struct),
+  including caml_backtrace_buffer and related backtrace-related globals
+- thread_leave_blocking_section will restore the global resources
+  from the thread-specific storage
+
+st_stubs.c also has a "master runtime lock" that protects the global
+data of the scheduler (list of current threads, etc.). This lock must
+be held at thread creation, deletion, scheduling time. It is also held
+as long as a caml thread is still running, that is outside the
+blocking section: it is acquired by
+caml_thread_leave_blocking_section, and released by
+caml_thread_enter_blocking_section.
+
+I will call "thread-specific backtrace buffer" the value of the
+thread-specific stored backtrace buffer, and "global backtrace buffer"
+the global caml_backtrace_buffer value.
+
+Upon creating a new thread, the thread-specific backtrace buffer is
+set to NULL. Upon freeing a thread, it is freed if not NULL
+anymore.
+
+The memory leak happens as the following events happen in order
+in your reproduction case, when a thread is created and then joined
+from the "main thread":
+
+0. thread creation: the new thread is created with its thread-specific
+   buffer set to NULL
+
+1. thread join (into the scheduler): the main thread releases control, enters the
+   blocking section, storing the current global backtrace buffer as
+   its thread-specific buffer.
+
+2. thread join (out of the scheduler): the new thread gains control,
+   leaves the blocking section, restoring its current thread-specific
+   buffer (NULL) into the global backtrace buffer.
+
+3. An exception is raised with backtrace enabled; the runtime tries to
+   collect the backtrace into the global backtrace buffer, notices that it is NULL,
+   and malloc() a new backtrace buffer in it. The thread-specific buffer value is
+   *not* changed, it is still NULL.
+
+4. When a thread terminate, caml_thread_stop() is called (see
+   caml_thread_start declaration for how this is
+   implemented). caml_thread_stop calls caml_thread_remove_info which
+   cleanups the thread-local structure; but the thread-local backtrace
+   buffer of the new thread is still NULL, so nothing happens. Control
+   is given back to the scheduler by releasing the master runtime
+   lock, *without* calling caml_thread_enter_blocking_section (this
+   would be invalid as the thread-specific storage does not exist, and
+   also we must leave in the same state we were when we started the
+   thread, and that is just after calling
+   caml_thread_leave_blocking_section from the main thread).
+
+The memory leak happens between steps (3) and (4): a new backtrace
+buffer has been allocated by the backtrace code, but the thread-local
+structure does not know about it so it is not properly cleaned-up when
+stopping the thread.
+
+The patch changes the caml_thread_stop() code to save the current
+state in the thread-local storage at the very beginning of
+caml_thread_stop. This means that the cleanup logic in
+caml_thread_remove_info will see accurate values and thus deallocate
+the new backtrace buffer at step (4).
+---
+ otherlibs/systhreads/st_stubs.c | 50 +++++++++++++++++++++++++----------------
+ 1 file changed, 31 insertions(+), 19 deletions(-)
+
+diff --git a/otherlibs/systhreads/st_stubs.c b/otherlibs/systhreads/st_stubs.c
+index dbdba52..6a65332 100644
+--- a/otherlibs/systhreads/st_stubs.c
++++ b/otherlibs/systhreads/st_stubs.c
+@@ -152,12 +152,10 @@ static void caml_thread_scan_roots(scanning_action action)
+   if (prev_scan_roots_hook != NULL) (*prev_scan_roots_hook)(action);
+ }
+ 
+-/* Hooks for enter_blocking_section and leave_blocking_section */
++/* Saving and restoring thread state in curr_thread */
+ 
+-static void caml_thread_enter_blocking_section(void)
++static inline void caml_thread_save_thread_state(void)
+ {
+-  /* Save the stack-related global variables in the thread descriptor
+-     of the current thread */
+ #ifdef NATIVE_CODE
+   curr_thread->bottom_of_stack = caml_bottom_of_stack;
+   curr_thread->last_retaddr = caml_last_return_address;
+@@ -176,18 +174,10 @@ static void caml_thread_enter_blocking_section(void)
+   curr_thread->backtrace_pos = backtrace_pos;
+   curr_thread->backtrace_buffer = backtrace_buffer;
+   curr_thread->backtrace_last_exn = backtrace_last_exn;
+-  /* Tell other threads that the runtime is free */
+-  st_masterlock_release(&caml_master_lock);
+ }
+ 
+-static void caml_thread_leave_blocking_section(void)
++static inline void caml_thread_restore_thread_state(void)
+ {
+-  /* Wait until the runtime is free */
+-  st_masterlock_acquire(&caml_master_lock);
+-  /* Update curr_thread to point to the thread descriptor corresponding
+-     to the thread currently executing */
+-  curr_thread = st_tls_get(thread_descriptor_key);
+-  /* Restore the stack-related global variables */
+ #ifdef NATIVE_CODE
+   caml_bottom_of_stack= curr_thread->bottom_of_stack;
+   caml_last_return_address = curr_thread->last_retaddr;
+@@ -208,6 +198,29 @@ static void caml_thread_leave_blocking_section(void)
+   backtrace_last_exn = curr_thread->backtrace_last_exn;
+ }
+ 
++/* Hooks for enter_blocking_section and leave_blocking_section */
++
++
++static void caml_thread_enter_blocking_section(void)
++{
++  /* Save the stack-related global variables in the thread descriptor
++     of the current thread */
++  caml_thread_save_thread_state();
++  /* Tell other threads that the runtime is free */
++  st_masterlock_release(&caml_master_lock);
++}
++
++static void caml_thread_leave_blocking_section(void)
++{
++  /* Wait until the runtime is free */
++  st_masterlock_acquire(&caml_master_lock);
++  /* Update curr_thread to point to the thread descriptor corresponding
++     to the thread currently executing */
++  curr_thread = st_tls_get(thread_descriptor_key);
++  /* Restore the stack-related global variables */
++  caml_thread_restore_thread_state();
++}
++
+ static int caml_thread_try_leave_blocking_section(void)
+ {
+   /* Disable immediate processing of signals (PR#3659).
+@@ -293,7 +306,6 @@ static uintnat caml_thread_stack_usage(void)
+ static caml_thread_t caml_thread_new_info(void)
+ {
+   caml_thread_t th;
+-
+   th = (caml_thread_t) malloc(sizeof(struct caml_thread_struct));
+   if (th == NULL) return NULL;
+   th->descr = Val_unit;         /* filled later */
+@@ -459,11 +471,11 @@ CAMLprim value caml_thread_cleanup(value unit)   /* ML */
+ 
+ static void caml_thread_stop(void)
+ {
+-#ifndef NATIVE_CODE
+-  /* PR#5188: update curr_thread->stack_low because the stack may have
+-     been reallocated since the last time we entered a blocking section */
+-  curr_thread->stack_low = stack_low;
+-#endif
++  /* PR#5188, PR#7220: some of the global state may have
++     changed as the thread was running, so we save it in the
++     curr_thread data to make sure that the cleanup logic
++     below uses accurate information. */
++  caml_thread_save_thread_state();
+   /* Signal that the thread has terminated */
+   caml_threadstatus_terminate(Terminated(curr_thread->descr));
+   /* Remove th from the doubly-linked list of threads and free its info block */
+-- 
+2.5.0
+

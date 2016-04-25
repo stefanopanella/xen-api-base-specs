@@ -1,12 +1,13 @@
 %define debug_package %{nil}
 
 Name:           ocaml-crc
-Version:        0.9.1
+Version:        0.9.9
 Release:        1%{?dist}
 Summary:        CRC implementation for OCaml
 License:        ISC
 URL:            https://github.com/xapi-project/ocaml-crc/
 Source0:        https://github.com/xapi-project/ocaml-crc/archive/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  oasis
 BuildRequires:  ocaml
 BuildRequires:  ocaml-ocamldoc
 BuildRequires:  ocaml-findlib
@@ -42,6 +43,7 @@ export OCAMLFIND_LDCONF=%{buildroot}%{_libdir}/ocaml/ld.conf
 ocaml setup.ml -install
 
 %files
+%{_libdir}/ocaml/crc
 %{_libdir}/ocaml/crc/META
 %{_libdir}/ocaml/crc/crc.cma
 %{_libdir}/ocaml/crc/crc.cmi
@@ -50,13 +52,22 @@ ocaml setup.ml -install
 %files devel
 %doc ChangeLog README.md
 %{_libdir}/ocaml/crc/crc.a
+%{_libdir}/ocaml/crc/crc.annot
+%{_libdir}/ocaml/crc/crc.cmt
+%{_libdir}/ocaml/crc/crc.cmti
 %{_libdir}/ocaml/crc/crc.cmx
 %{_libdir}/ocaml/crc/crc.cmxa
 %{_libdir}/ocaml/crc/crc.cmxs
 %{_libdir}/ocaml/crc/crc.mli
 %{_libdir}/ocaml/crc/libcrc_stubs.a
+%{_libdir}/ocaml/crc/crc.cmt
+%{_libdir}/ocaml/crc/crc.cmti
+%{_libdir}/ocaml/crc/crc.annot
 
 %changelog
+* Fri Apr 22 2016 Si Beaumont <simon.beaumont@citrix.com> - 0.9.9-1
+- Update to 0.9.9
+
 * Sat Apr 26 2014 David Scott <dave.scott@citrix.com> - 0.9.1-1
 - Update to 0.9.1
 

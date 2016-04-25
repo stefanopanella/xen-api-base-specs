@@ -1,11 +1,10 @@
 Name:           ocaml-opasswd
-Version:        0.9.3
+Version:        1.0.0
 Release:        1%{?dist}
 Summary:        OCaml interface to the glibc passwd/shadow password functions
 License:        ISC
 URL:            https://github.com/xapi-project/ocaml-opasswd
-Source0:        https://github.com/xapi-project/ocaml-opasswd/archive/%{version}/%{name}-%{version}.tar.gz
-#Patch0:         ocaml-opasswd-ocaml-4.00.1.patch
+Source0:        https://github.com/xapi-project/ocaml-opasswd/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ocaml 
 BuildRequires:  ocaml-findlib-devel
 BuildRequires:  ocaml-ctypes-devel 
@@ -56,6 +55,9 @@ rm -f %{buildroot}%{_libdir}/ocaml/usr/local/bin/opasswd_test
 %{_libdir}/ocaml/oPasswd/*.mli
 
 %changelog
+* Fri Apr 15 2016 Euan Harris <euan.harris@citrix.com> - 1.0.0-1
+- Update to 1.0.0
+
 * Thu May  1 2014 David Scott <dave.scott@citrix.com> - 0.9.3-1
 - For -devel package add dependency on ocaml-ctypes-devel
 

@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:           ocaml-shared-block-ring
-Version:        2.0.0
+Version:        2.2.0
 Release:        1%{?dist}
 Summary:        OCaml implementation of shared block rings
 License:        ISC
@@ -65,6 +65,12 @@ make install
 %{_libdir}/ocaml/shared-block-ring/*.mli
 
 %changelog
+* Mon Apr 25 2016 Euan Harris <euan.harris@citrix.com> - 2.2.0-1
+- Update to 2.2.0
+
+* Fri Apr 15 2016 Euan Harris <euan.harris@citrix.com> - 2.1.0-1
+- Update to 2.1.0
+
 * Thu Apr 30 2015 David Scott <dave.scott@citrix.com> - 2.0.0-1
 - Update to 2.0.0
 

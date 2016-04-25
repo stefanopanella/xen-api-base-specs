@@ -9,7 +9,7 @@
 
 Name:           ocaml
 Version:        4.02.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 
 Summary:        OCaml compiler and programming environment
 
@@ -56,6 +56,7 @@ Patch0016:      0016-ppc64le-Fix-calling-convention-of-external-functions.patch
 Patch0017:      0017-ppc64-Fix-PIC-variant-of-asmrun.patch
 Patch0018:      0018-ppc64le-Fix-PIC-variant-of-asmrun.patch
 Patch0019:      0019-ppc64-ppc64le-Fix-behaviour-of-Int64.max_int-1-RHBZ-.patch
+Patch0020:      PR7220-fix-backtrace-memory-leak-in-systhreads.patch
 
 # Add BFD support so that ocamlobjinfo supports *.cmxs format (RHBZ#1113735).
 BuildRequires:  binutils-devel
@@ -407,6 +408,9 @@ fi
 
 
 %changelog
+* Tue Apr 12 2016 Rob Hoes <rob.hoes@citrix.com> - 4.02.2-6
+- Include patch to fix memory leak in OCaml runtime with backtraces+threads.
+
 * Mon Nov 30 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 4.02.2-5
 - Remove emacs package
 
