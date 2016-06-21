@@ -1,12 +1,12 @@
 %define debug_package %{nil}
 
 Name:           ocaml-crc
-Version:        0.9.9
+Version:        1.0.0
 Release:        1%{?dist}
 Summary:        CRC implementation for OCaml
 License:        ISC
 URL:            https://github.com/xapi-project/ocaml-crc/
-Source0:        https://github.com/xapi-project/ocaml-crc/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/xapi-project/ocaml-crc/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  oasis
 BuildRequires:  ocaml
 BuildRequires:  ocaml-ocamldoc
@@ -65,6 +65,9 @@ ocaml setup.ml -install
 %{_libdir}/ocaml/crc/crc.annot
 
 %changelog
+* Thu Apr 28 2016 Euan Harris <euan.harris@citrix.com> - 1.0.0-1
+- Update to 1.0.0
+
 * Fri Apr 22 2016 Si Beaumont <simon.beaumont@citrix.com> - 0.9.9-1
 - Update to 0.9.9
 

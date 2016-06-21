@@ -2,11 +2,13 @@
 
 Name:           ocaml-vhd
 Version:        0.7.3
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        Pure OCaml library for reading, writing, streaming, converting vhd format files
 License:        LGPL2.1 + OCaml linking exception
 URL:            https://github.com/djs55/ocaml-vhd
 Source0:        https://github.com/djs55/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         0001-CA-210015-retry-if-lseek-2-doesn-t-support-SEEK_DATA.patch
+
 BuildRequires:  ocaml
 BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-cstruct-devel
@@ -45,6 +47,7 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 if [ -x ./configure ]; then
@@ -80,6 +83,17 @@ ocaml setup.ml -install
 
 
 %changelog
+* Thu May 26 2016 Christian Lindig <christian.lindig@citrix.com> - 0.7.3-3
+- drop the previous patch because it has two problems: (1) the code doesn't
+  compile when the platform doesn't support SEEK_DATA (2) the retry of
+  lseek may mask errors.
+- apply a new patch that avoids the above problems
+
+* Tue May 24 2016 Christian Lindig <christian.lindig@citrix.com> - 0.7.3-2
+- Applied patch https://github.com/djs55/ocaml-vhd/pull/33 for
+  runtime support of filesystems without SEEK_DATA support. When lseek
+  fails, it is tried again with SEEK_SET.
+
 * Thu Apr 21 2016 Euan Harris <euan.harris@citrix.com> - 0.7.3-1
 - Update to 0.7.3
 
