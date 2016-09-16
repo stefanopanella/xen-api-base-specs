@@ -3,7 +3,7 @@
 
 Name:           ocaml-lwt
 Version:        2.4.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OCaml lightweight thread library
 
 License:        LGPLv2+ with exceptions
@@ -73,10 +73,16 @@ strip $OCAMLFIND_DESTDIR/stublibs/dll*.so
 %files devel
 %doc LICENSE COPYING CHANGES README.md
 %{_libdir}/ocaml/lwt/*
+%exclude %{_libdir}/ocaml/lwt/*.annot
+%exclude %{_libdir}/ocaml/lwt/*.cmt
+%exclude %{_libdir}/ocaml/lwt/*.cmti
 %{_libdir}/ocaml/stublibs/*.so
 %{_libdir}/ocaml/stublibs/*.so.owner
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 2.4.8-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Sun May 11 2014 David Scott <dave.scott@citrix.com> - 2.4.5-1
 - Update to 2.4.5
 

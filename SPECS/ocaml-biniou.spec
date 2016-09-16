@@ -2,7 +2,7 @@
 
 Name:           ocaml-biniou
 Version:        1.0.6
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Compact, fast and extensible serialization format
 License:        BSD3
 URL:            http://mjambon.com/biniou.html
@@ -46,6 +46,9 @@ make install BINDIR=%{buildroot}/%{_bindir}
 %exclude %{_libdir}/ocaml/biniou/*.cmxa
 %exclude %{_libdir}/ocaml/biniou/*.cmx
 %exclude %{_libdir}/ocaml/biniou/*.mli
+%exclude %{_libdir}/ocaml/biniou/*.annot
+%exclude %{_libdir}/ocaml/biniou/*.cmt
+%exclude %{_libdir}/ocaml/biniou/*.cmti
 
 %files devel
 %{_libdir}/ocaml/biniou/*.a
@@ -54,6 +57,9 @@ make install BINDIR=%{buildroot}/%{_bindir}
 %{_libdir}/ocaml/biniou/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.0.6-4
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 21 2014 Euan Harris <euan.harris@citrix.com> - 1.0.6-3
 - Switch to GitHub sources
 

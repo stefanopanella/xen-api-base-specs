@@ -3,7 +3,7 @@
 
 Name:           ocaml-typerep
 Version:        112.35.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Runtime types for OCaml.
 
 Group:          Development/Libraries
@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %exclude %{_libdir}/ocaml/typerep_lib/*.ml
 %exclude %{_libdir}/ocaml/typerep_lib/*.mli
+%exclude %{_libdir}/ocaml/typerep_lib/*.annot
+%exclude %{_libdir}/ocaml/typerep_lib/*.cmt
+%exclude %{_libdir}/ocaml/typerep_lib/*.cmti
 
 
 %files devel
@@ -97,6 +100,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/typerep_lib/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 112.35.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Jan 22 2016 Jon Ludlam <jonathan.ludlam@citrix.com> - 112.35.00-1
 - Update to 112.35.00
 

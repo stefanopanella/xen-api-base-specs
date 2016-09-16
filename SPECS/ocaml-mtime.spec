@@ -1,6 +1,6 @@
 Name:           ocaml-mtime
 Version:        0.8.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Monotonic wall-clock time for OCaml
 License:        BSD3
 URL:            http://erratique.ch/software/mtime
@@ -63,10 +63,16 @@ cp _build/src-os/mtime_top.cmxs %{buildroot}/%{_libdir}/ocaml/mtime/os
 %doc _build/README.md
 %{_libdir}/ocaml/mtime
 %{_libdir}/ocaml/mtime/os
+%exclude %{_libdir}/ocaml/mtime/*.annot
+%exclude %{_libdir}/ocaml/mtime/*.cmt
+%exclude %{_libdir}/ocaml/mtime/*.cmti
 %exclude %{_libdir}/ocaml/mtime/os/*.a
 %exclude %{_libdir}/ocaml/mtime/os/*.cmxa
 %exclude %{_libdir}/ocaml/mtime/os/*.cmx
 %exclude %{_libdir}/ocaml/mtime/os/*.mli
+%exclude %{_libdir}/ocaml/mtime/os/*.annot
+%exclude %{_libdir}/ocaml/mtime/os/*.cmt
+%exclude %{_libdir}/ocaml/mtime/os/*.cmti
 
 %files devel
 %{_libdir}/ocaml/mtime/os/*.a
@@ -75,5 +81,8 @@ cp _build/src-os/mtime_top.cmxs %{buildroot}/%{_libdir}/ocaml/mtime/os
 %{_libdir}/ocaml/mtime/os/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.8.1-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Apr 24 2015 David Scott <dave.scott@citrix.com> - 0.8.1-1
 - Initial package

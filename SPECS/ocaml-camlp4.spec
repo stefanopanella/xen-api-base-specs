@@ -7,7 +7,7 @@
 
 Name:          ocaml-camlp4
 Version:       4.02.2
-Release:       0.2.git%{shortcommit}%{?dist}
+Release:       0.3.git%{shortcommit}%{?dist}
 
 Summary:       Pre-Processor-Pretty-Printer for OCaml
 
@@ -94,6 +94,9 @@ make install \
 %dir %{_libdir}/ocaml/camlp4/Camlp4Top
 %{_libdir}/ocaml/camlp4/Camlp4Top/*.cmi
 %{_libdir}/ocaml/camlp4/Camlp4Top/*.cmo
+%exclude %{_libdir}/ocaml/camlp4/*.annot
+%exclude %{_libdir}/ocaml/camlp4/*.cmt
+%exclude %{_libdir}/ocaml/camlp4/*.cmti
 
 
 %files devel
@@ -117,6 +120,9 @@ make install \
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 4.02.2-0.3.git1e8965ea
+- Remove *.cmt, *.cmti and *.annot
+
 * Wed Jun 24 2015 Richard W.M. Jones <rjones@redhat.com> - 4.02.2-0.2.git1e8965ea
 - ocaml-4.02.2 final rebuild.
 

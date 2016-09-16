@@ -3,7 +3,7 @@
 
 Name:           ocaml-fileutils
 Version:        0.4.4
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        OCaml library for common file and filename operations
 
 License:        LGPLv2 with exceptions
@@ -82,6 +82,9 @@ make test
 %endif
 %exclude %{_libdir}/ocaml/fileutils/*.ml
 %exclude %{_libdir}/ocaml/fileutils/*.mli
+%exclude %{_libdir}/ocaml/fileutils/*.annot
+%exclude %{_libdir}/ocaml/fileutils/*.cmt
+%exclude %{_libdir}/ocaml/fileutils/*.cmti
 
 
 %files devel
@@ -96,6 +99,9 @@ make test
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.4.4-7
+- Remove *.cmt, *.cmti and *.annot
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.4-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 

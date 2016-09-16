@@ -1,6 +1,6 @@
 Name:           ocaml-ctypes
 Version:        0.4.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Library for binding to C libraries using pure OCaml
 License:        MIT
 URL:            https://github.com/ocamllabs/ocaml-ctypes/
@@ -41,6 +41,9 @@ make install
 %exclude %{_libdir}/ocaml/ctypes/*.cmxa
 %exclude %{_libdir}/ocaml/ctypes/*.cmx
 %exclude %{_libdir}/ocaml/ctypes/*.mli
+%exclude %{_libdir}/ocaml/ctypes/*.annot
+%exclude %{_libdir}/ocaml/ctypes/*.cmt
+%exclude %{_libdir}/ocaml/ctypes/*.cmti
 
 %files devel
 %{_libdir}/ocaml/ctypes/*.a
@@ -49,6 +52,9 @@ make install
 %{_libdir}/ocaml/ctypes/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.4.1-3
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri May  1 2015 Si Beaumont <simon.beaumont@citrix.com> - 0.4.1-2
 - Package shared libaries in the right place
 

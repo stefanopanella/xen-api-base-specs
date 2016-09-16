@@ -18,7 +18,10 @@ Patch1: stunnel-4-sample.patch
 Patch2: pollhup.patch
 Buildroot: %{_tmppath}/stunnel-root
 # util-linux is needed for rename
-BuildRequires: openssl-devel, pkgconfig, tcp_wrappers-devel, util-linux
+BuildRequires: openssl-devel
+BuildRequires: pkgconfig
+BuildRequires: tcp_wrappers-devel
+BuildRequires: util-linux
 # for /usr/bin/pod2man
 %if 0%{?fedora} > 18 || 0%{?rhel} >= 7
 BuildRequires: perl-podlators

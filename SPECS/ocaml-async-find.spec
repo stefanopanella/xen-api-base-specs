@@ -3,7 +3,7 @@
 
 Name:           ocaml-async-find
 Version:        111.28.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Jane Street Capital's asynchronous execution library (core)
 
 Group:          Development/Libraries
@@ -85,6 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_libdir}/ocaml/async_find/*.cmxa
 %endif
 %exclude %{_libdir}/ocaml/async_find/*.mli
+%exclude %{_libdir}/ocaml/async_find/*.annot
+%exclude %{_libdir}/ocaml/async_find/*.cmt
+%exclude %{_libdir}/ocaml/async_find/*.cmti
 
 %files devel
 %defattr(-,root,root,-)
@@ -96,6 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/async_find/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 111.28.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 14 2014 David Scott <dave.scott@citrix.com> - 111.28.00-1
 - Update to 111.28.00
 

@@ -2,7 +2,7 @@
 
 Name:           ocaml-oclock
 Version:        0.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        POSIX monotonic clock for OCaml
 License:        ISC
 URL:            https://github.com/polazarus/oclock
@@ -44,6 +44,9 @@ make install DESTDIR=%{buildroot}/%{_libdir}/ocaml
 %{_libdir}/ocaml/oclock
 %exclude %{_libdir}/ocaml/oclock/*.a
 %exclude %{_libdir}/ocaml/oclock/*.cmxa
+%exclude %{_libdir}/ocaml/oclock/*.annot
+%exclude %{_libdir}/ocaml/oclock/*.cmt
+%exclude %{_libdir}/ocaml/oclock/*.cmti
 %{_libdir}/ocaml/stublibs/dlloclock.so
 %{_libdir}/ocaml/stublibs/dlloclock.so.owner
 
@@ -52,6 +55,9 @@ make install DESTDIR=%{buildroot}/%{_libdir}/ocaml
 %{_libdir}/ocaml/oclock/*.cmxa
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.3-4
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri May 30 2014 Euan Harris <euan.harris@citrix.com> - 0.3-3
 - Split files correctly between base and devel packages
 

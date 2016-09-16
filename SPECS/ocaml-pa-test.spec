@@ -3,7 +3,7 @@
 
 Name:           ocaml-pa-test
 Version:        112.24.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Jane Street's pa_test
 
 Group:          Development/Libraries
@@ -83,6 +83,9 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_libdir}/ocaml/pa_test/*.cmxa
 %endif
 %exclude %{_libdir}/ocaml/pa_test/*.mli
+%exclude %{_libdir}/ocaml/pa_test/*.annot
+%exclude %{_libdir}/ocaml/pa_test/*.cmt
+%exclude %{_libdir}/ocaml/pa_test/*.cmti
 
 
 %files devel
@@ -95,6 +98,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/pa_test/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 112.24.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Jan 22 2016 Jon Ludlam <jonathan.ludlam@citrix.com> - 112.24.00-1
 - Update to 112.24.00
 

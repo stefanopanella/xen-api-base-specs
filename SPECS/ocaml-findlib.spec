@@ -6,7 +6,7 @@
 
 Name:           ocaml-findlib
 Version:        1.5.5
-Release:        1%{?extrarelease}
+Release:        2%{?extrarelease}
 Summary:        Objective CAML package manager and build helper
 
 Group:          Development/Libraries
@@ -20,7 +20,8 @@ BuildRequires:  ocaml >= 4.00.1
 BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-compiler-libs
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  m4, ncurses-devel
+BuildRequires:  m4
+BuildRequires:  ncurses-devel
 BuildRequires:  gawk
 Requires:       ocaml
 
@@ -104,6 +105,9 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_libdir}/ocaml/findlib/*.cmxa
 %endif
 %exclude %{_libdir}/ocaml/findlib/*.mli
+%exclude %{_libdir}/ocaml/findlib/*.annot
+%exclude %{_libdir}/ocaml/findlib/*.cmt
+%exclude %{_libdir}/ocaml/findlib/*.cmti
 %exclude %{_libdir}/ocaml/findlib/Makefile.config
 %{_libdir}/ocaml/num-top
 %if !%opt
@@ -123,6 +127,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.5.5-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Apr  3 2015 David Scott <dave.scott@citrix.com>
 - Update to 1.5.5 with bytes package
 

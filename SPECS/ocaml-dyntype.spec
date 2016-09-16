@@ -1,6 +1,6 @@
 Name:           ocaml-dyntype
 Version:        0.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        syntax extension which makes OCaml types and values easier to manipulate programmatically
 License:        ISC
 URL:            https://github.com/mirage/dyntype/
@@ -37,11 +37,17 @@ make install
 %{_libdir}/ocaml/dyntype
 %exclude %{_libdir}/ocaml/dyntype/*.a
 %exclude %{_libdir}/ocaml/dyntype/*.cmxa
+%exclude %{_libdir}/ocaml/dyntype/*.annot
+%exclude %{_libdir}/ocaml/dyntype/*.cmt
+%exclude %{_libdir}/ocaml/dyntype/*.cmti
 
 %files devel
 %{_libdir}/ocaml/dyntype/*.a
 %{_libdir}/ocaml/dyntype/*.cmxa
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.9.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Oct 16 2014 David Scott <dave.scott@citrix.com> - 0.9.0-1
 - Initial package

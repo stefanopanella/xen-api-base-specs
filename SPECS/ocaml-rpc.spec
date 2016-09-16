@@ -2,7 +2,7 @@
 
 Name:           ocaml-rpc
 Version:        1.5.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An RPC library for OCaml
 License:        LGPL
 URL:            https://github.com/mirage/ocaml-rpc
@@ -45,11 +45,17 @@ make install DESTDIR=${buildroot}
 %doc README.md
 %{_libdir}/ocaml/rpclib
 %exclude %{_libdir}/ocaml/rpclib/*.cmx
+%exclude %{_libdir}/ocaml/rpclib/*.annot
+%exclude %{_libdir}/ocaml/rpclib/*.cmt
+%exclude %{_libdir}/ocaml/rpclib/*.cmti
 
 %files devel
 %{_libdir}/ocaml/rpclib/*.cmx
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.5.5-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Jul 23 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.5.5-1
 - Update to 1.5.5
 

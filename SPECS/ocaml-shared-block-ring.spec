@@ -2,7 +2,7 @@
 
 Name:           ocaml-shared-block-ring
 Version:        2.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OCaml implementation of shared block rings
 License:        ISC
 URL:            https://github.com/mirage/shared-block-ring/
@@ -57,6 +57,9 @@ make install
 %exclude %{_libdir}/ocaml/shared-block-ring/*.cmxa
 %exclude %{_libdir}/ocaml/shared-block-ring/*.cmx
 %exclude %{_libdir}/ocaml/shared-block-ring/*.mli
+%exclude %{_libdir}/ocaml/shared-block-ring/*.annot
+%exclude %{_libdir}/ocaml/shared-block-ring/*.cmt
+%exclude %{_libdir}/ocaml/shared-block-ring/*.cmti
 
 %files devel
 %{_libdir}/ocaml/shared-block-ring/*.a
@@ -65,6 +68,9 @@ make install
 %{_libdir}/ocaml/shared-block-ring/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 2.2.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Mon Apr 25 2016 Euan Harris <euan.harris@citrix.com> - 2.2.0-1
 - Update to 2.2.0
 

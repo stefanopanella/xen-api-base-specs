@@ -1,6 +1,6 @@
 Name:           ocaml-easy-format
 Version:        1.0.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Indentation made easy
 License:        BSD3
 URL:            http://mjambon.com/easy-format.html
@@ -37,12 +37,18 @@ make install
 %{_libdir}/ocaml/easy-format
 %exclude %{_libdir}/ocaml/easy-format/*.cmx
 %exclude %{_libdir}/ocaml/easy-format/*.mli
+%exclude %{_libdir}/ocaml/easy-format/*.annot
+%exclude %{_libdir}/ocaml/easy-format/*.cmt
+%exclude %{_libdir}/ocaml/easy-format/*.cmti
 
 %files devel
 %{_libdir}/ocaml/easy-format/*.cmx
 %{_libdir}/ocaml/easy-format/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.0.1-4
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 21 2014 Euan Harris <euan.harris@citrix.com> - 1.0.1-3
 - Switch to GitHub sources
 

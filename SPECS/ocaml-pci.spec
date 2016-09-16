@@ -1,6 +1,6 @@
 Name:           ocaml-pci
 Version:        0.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OCaml bindings to libpci
 License:        LGPL2.1 + OCaml linking exception
 URL:            https://github.com/simonjbeaumont/ocaml-pci
@@ -52,8 +52,14 @@ make test
 %exclude %{_libdir}/ocaml/pci/*.a
 %exclude %{_libdir}/ocaml/pci/*.cmxa
 %exclude %{_libdir}/ocaml/pci/*.mli
+%exclude %{_libdir}/ocaml/pci/*.annot
+%exclude %{_libdir}/ocaml/pci/*.cmt
+%exclude %{_libdir}/ocaml/pci/*.cmti
 %exclude %{_libdir}/ocaml/pci_bindings/*.a
 %exclude %{_libdir}/ocaml/pci_bindings/*.cmxa
+%exclude %{_libdir}/ocaml/pci_bindings/*.annot
+%exclude %{_libdir}/ocaml/pci_bindings/*.cmt
+%exclude %{_libdir}/ocaml/pci_bindings/*.cmti
 
 %files devel
 %{_libdir}/ocaml/pci/*.a
@@ -63,6 +69,9 @@ make test
 %{_libdir}/ocaml/pci_bindings/*.cmxa
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.2.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Wed May 20 2015 Si Beaumont <simon.beaumont@citrix.com> - 0.2.0-1
 - Update to 0.2.0
 

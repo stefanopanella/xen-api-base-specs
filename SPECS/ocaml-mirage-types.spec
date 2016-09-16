@@ -2,7 +2,7 @@
 
 Name:           ocaml-mirage-types
 Version:        1.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        MirageOS interfaces
 License:        ISC
 URL:            https://github.com/mirage/mirage
@@ -23,8 +23,8 @@ See http://openmirage.org for more information.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
-BuildRequires:  ocaml-ipaddr-devel%{?_isa}
-BuildRequires:  ocaml-lwt-devel%{?_isa}
+Requires:       ocaml-ipaddr-devel%{?_isa}
+Requires:       ocaml-lwt-devel%{?_isa}
 
 %description    devel
 The %{name}-devel package contains libraries and signature files for
@@ -45,11 +45,17 @@ make install-types
 %files
 %{_libdir}/ocaml/mirage-types
 %exclude %{_libdir}/ocaml/mirage-types/*.mli
+%exclude %{_libdir}/ocaml/mirage-types/*.annot
+%exclude %{_libdir}/ocaml/mirage-types/*.cmt
+%exclude %{_libdir}/ocaml/mirage-types/*.cmti
 
 %files devel
 %{_libdir}/ocaml/mirage-types/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.2.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Wed Jul 16 2014 David Scott <dave.scott@citrix.com> - 1.2.0-1
 - Update to 1.2.0
 

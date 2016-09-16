@@ -2,7 +2,7 @@
 
 Name:           ocaml-ppxtools
 Version:        5.0+4.02.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A tool for code coverage profiling
 License:        MIT
 URL:            https://github.com/alainfrisch/ppx_tools
@@ -41,6 +41,9 @@ make install
 %exclude %{_libdir}/ocaml/ppx_tools/*.cmxa
 %exclude %{_libdir}/ocaml/ppx_tools/*.cmx
 %exclude %{_libdir}/ocaml/ppx_tools/*.mli
+%exclude %{_libdir}/ocaml/ppx_tools/*.annot
+%exclude %{_libdir}/ocaml/ppx_tools/*.cmt
+%exclude %{_libdir}/ocaml/ppx_tools/*.cmti
 
 %files devel
 %{_libdir}/ocaml/ppx_tools/*.a
@@ -49,6 +52,9 @@ make install
 %{_libdir}/ocaml/ppx_tools/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 5.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Wed May 11 2016 Christian Lindig <christian.lindig@citrix.com> - 5.0+4.02.0-1
 - Initial package
 

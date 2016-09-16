@@ -2,7 +2,7 @@
 
 Name:           ocaml-mirage-block-unix
 Version:        1.2.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Mirage block driver for Unix that implements the blkfront/back protocol
 License:        ISC
 URL:            https://github.com/mirage/mirage-block-unix/
@@ -49,6 +49,9 @@ make install
 %exclude %{_libdir}/ocaml/mirage-block-unix/*.cmxa
 %exclude %{_libdir}/ocaml/mirage-block-unix/*.cmx
 %exclude %{_libdir}/ocaml/mirage-block-unix/*.mli
+%exclude %{_libdir}/ocaml/mirage-block-unix/*.annot
+%exclude %{_libdir}/ocaml/mirage-block-unix/*.cmt
+%exclude %{_libdir}/ocaml/mirage-block-unix/*.cmti
 
 %files devel
 %{_libdir}/ocaml/mirage-block-unix/*.a
@@ -57,5 +60,8 @@ make install
 %{_libdir}/ocaml/mirage-block-unix/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.2.2-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Sun Apr 12 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.1-1
 - Initial package

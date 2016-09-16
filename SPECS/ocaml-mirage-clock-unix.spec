@@ -2,7 +2,7 @@
 
 Name:           ocaml-mirage-clock-unix
 Version:        1.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Mirage-compatible Clock library for Unix
 License:        ISC
 URL:            https://github.com/mirage/mirage-clock/
@@ -42,6 +42,9 @@ make unix-install
 %exclude %{_libdir}/ocaml/mirage-clock-unix/*.a
 %exclude %{_libdir}/ocaml/mirage-clock-unix/*.cmxa
 %exclude %{_libdir}/ocaml/mirage-clock-unix/*.cmx
+%exclude %{_libdir}/ocaml/mirage-clock-unix/*.annot
+%exclude %{_libdir}/ocaml/mirage-clock-unix/*.cmt
+%exclude %{_libdir}/ocaml/mirage-clock-unix/*.cmti
 
 %files devel
 %{_libdir}/ocaml/mirage-clock-unix/*.a
@@ -49,5 +52,8 @@ make unix-install
 %{_libdir}/ocaml/mirage-clock-unix/*.cmxa
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.0.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Wed Jul 16 2014 David Scott <dave.scott@citrix.com> - 1.0.0-1
 - Initial package

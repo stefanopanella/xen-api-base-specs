@@ -5,7 +5,7 @@
 
 Name:           ocaml-pa-pipebang
 Version:        110.01.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Syntax extension to transform x |! f into f x
 
 Group:          Development/Libraries
@@ -83,6 +83,9 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_libdir}/ocaml/pa_pipebang/*.cmxa
 %endif
 %exclude %{_libdir}/ocaml/pa_pipebang/*.ml
+%exclude %{_libdir}/ocaml/pa_pipebang/*.annot
+%exclude %{_libdir}/ocaml/pa_pipebang/*.cmt
+%exclude %{_libdir}/ocaml/pa_pipebang/*.cmti
 
 
 %files devel
@@ -96,6 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 110.01.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 14 2014 David Scott <dave.scott@citrix.com> - 110.01.00-1
 - Update to 110.01.00
 

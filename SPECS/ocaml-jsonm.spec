@@ -1,6 +1,6 @@
 Name:           ocaml-jsonm
 Version:        0.9.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Non-blocking streaming JSON codec for OCaml
 License:        BSD3
 URL:            http://erratique.ch/software/jsonm
@@ -65,6 +65,9 @@ ocaml setup.ml -install
 %exclude %{_libdir}/ocaml/jsonm/*.cmxa
 %exclude %{_libdir}/ocaml/jsonm/*.cmx
 %exclude %{_libdir}/ocaml/jsonm/*.mli
+%exclude %{_libdir}/ocaml/jsonm/*.annot
+%exclude %{_libdir}/ocaml/jsonm/*.cmt
+%exclude %{_libdir}/ocaml/jsonm/*.cmti
 %{_bindir}/jsontrip
 %{_bindir}/ocamltweets
 
@@ -75,5 +78,8 @@ ocaml setup.ml -install
 %{_libdir}/ocaml/jsonm/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.9.1-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Oct 16 2014 David Scott <dave.scott@citri.com> - 0.9.1-1
 - Initial package

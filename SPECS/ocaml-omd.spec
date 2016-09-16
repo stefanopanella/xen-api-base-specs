@@ -1,6 +1,6 @@
 Name:           ocaml-omd
 Version:        1.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Markdown frontend in pure OCaml.
 License:        ISC
 URL:            https://github.com/ocaml/omd
@@ -57,6 +57,9 @@ make install
 %exclude %{_libdir}/ocaml/omd/*.cmxa
 %exclude %{_libdir}/ocaml/omd/*.cmx
 %exclude %{_libdir}/ocaml/omd/*.mli
+%exclude %{_libdir}/ocaml/omd/*.annot
+%exclude %{_libdir}/ocaml/omd/*.cmt
+%exclude %{_libdir}/ocaml/omd/*.cmti
 %{_bindir}/omd
 %{_bindir}/test_cow
 %{_bindir}/test_spec
@@ -68,5 +71,8 @@ make install
 %{_libdir}/ocaml/omd/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.0.2-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Oct 16 2014 David Scott <dave.scott@citrix.com> - 1.0.2-1
 - Initial package

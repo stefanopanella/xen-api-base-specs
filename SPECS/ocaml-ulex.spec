@@ -1,6 +1,6 @@
 Name:           ocaml-ulex
 Version:        1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        lexer generator for Unicode and OCaml
 License:        ISC
 URL:            http://ftp.de.debian.org/debian/pool/main/u/ulex/ulex_1.1.orig.tar.gz
@@ -31,7 +31,13 @@ make install
 %{_libdir}/ocaml/ulex/*.cmxa
 %{_libdir}/ocaml/ulex/*.cmx
 %{_libdir}/ocaml/ulex/*.mli
+%exclude %{_libdir}/ocaml/ulex/*.annot
+%exclude %{_libdir}/ocaml/ulex/*.cmt
+%exclude %{_libdir}/ocaml/ulex/*.cmti
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.1-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Oct 16 2014 David Scott <dave.scott@citrix.com> - 1.1-1
 - Initial package

@@ -2,7 +2,7 @@
 
 Name:           ocaml-uri
 Version:        1.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A URI library for OCaml
 License:        ISC
 URL:            https://github.com/mirage/ocaml-uri
@@ -50,6 +50,9 @@ make install
 %exclude %{_libdir}/ocaml/uri/*.cmxa
 %exclude %{_libdir}/ocaml/uri/*.cmx
 %exclude %{_libdir}/ocaml/uri/*.mli
+%exclude %{_libdir}/ocaml/uri/*.annot
+%exclude %{_libdir}/ocaml/uri/*.cmt
+%exclude %{_libdir}/ocaml/uri/*.cmti
 
 %files devel
 %doc uri.docdir/*
@@ -61,6 +64,9 @@ make install
 %{_libdir}/ocaml/uri/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.6.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Jun 06 2014 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.6.0-1
 - Update to 1.6.0
 

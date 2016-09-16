@@ -2,7 +2,7 @@
 
 Name:           ocaml-re
 Version:        1.2.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A regular expression library for OCaml
 License:        LGPL
 URL:            https://github.com/ocaml/ocaml-re
@@ -43,6 +43,9 @@ make install
 %exclude %{_libdir}/ocaml/re/*.cmxa
 %exclude %{_libdir}/ocaml/re/*.cmx
 %exclude %{_libdir}/ocaml/re/*.mli
+%exclude %{_libdir}/ocaml/re/*.annot
+%exclude %{_libdir}/ocaml/re/*.cmt
+%exclude %{_libdir}/ocaml/re/*.cmti
 
 %files devel
 %doc re-api.docdir/*
@@ -53,6 +56,9 @@ make install
 %{_libdir}/ocaml/re/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.2.2-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Sat Jun  7 2014 David Scott <dave.scott@citrix.com> - 1.2.2-1
 - Update to 1.2.2
 

@@ -2,7 +2,7 @@
 
 Name:           ocaml-io-page
 Version:        1.1.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Efficient handling of I/O memory pages on Unix and Xen.
 License:        ISC
 URL:            https://github.com/mirage/io-page
@@ -47,6 +47,9 @@ make install
 %exclude %{_libdir}/ocaml/io-page/*.cmxa
 %exclude %{_libdir}/ocaml/io-page/*.cmx
 %exclude %{_libdir}/ocaml/io-page/*.mli
+%exclude %{_libdir}/ocaml/io-page/*.annot
+%exclude %{_libdir}/ocaml/io-page/*.cmt
+%exclude %{_libdir}/ocaml/io-page/*.cmti
 
 %files devel
 %{_libdir}/ocaml/io-page/*.a
@@ -55,6 +58,9 @@ make install
 %{_libdir}/ocaml/io-page/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.1.1-3
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri May 30 2014 Euan Harris <euan.harris@citrix.com> - 1.1.1-2
 - Split files corrrectly between base and devel packages
 

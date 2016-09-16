@@ -3,7 +3,7 @@
 
 Name:           ocaml-pa-ounit
 Version:        112.35.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Syntax extension for in-line tests in code.
 
 Group:          Development/Libraries
@@ -80,6 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %exclude %{_libdir}/ocaml/pa_ounit/*.ml
 %exclude %{_libdir}/ocaml/pa_ounit/*.mli
+%exclude %{_libdir}/ocaml/pa_ounit/*.annot
+%exclude %{_libdir}/ocaml/pa_ounit/*.cmt
+%exclude %{_libdir}/ocaml/pa_ounit/*.cmti
 
 
 %files devel
@@ -94,6 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 112.35.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Jan 22 2016 Jon Ludlam <jonathan.ludlam@citrix.com> - 112.35.00-1
 - Update to 112.35.00
 

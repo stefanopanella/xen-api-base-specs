@@ -1,6 +1,6 @@
 Name:           ocaml-ezjsonm
 Version:        0.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An easy interface on top of the Jsonm library
 License:        ISC
 URL:            https://github.com/samoht/ezjsonm
@@ -45,6 +45,9 @@ make install
 %exclude %{_libdir}/ocaml/ezjsonm/*.cmxa
 %exclude %{_libdir}/ocaml/ezjsonm/*.cmx
 %exclude %{_libdir}/ocaml/ezjsonm/*.mli
+%exclude %{_libdir}/ocaml/ezjsonm/*.annot
+%exclude %{_libdir}/ocaml/ezjsonm/*.cmt
+%exclude %{_libdir}/ocaml/ezjsonm/*.cmti
 
 %files devel
 %{_libdir}/ocaml/ezjsonm/*.a
@@ -53,5 +56,8 @@ make install
 %{_libdir}/ocaml/ezjsonm/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.2.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Oct 16 2014 David Scott <dave.scott@citrix.com> - 0.2.0-1
 - Initial package

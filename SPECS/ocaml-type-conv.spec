@@ -2,7 +2,7 @@
 
 Name:           ocaml-type-conv
 Version:        111.13.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OCaml base library for type conversion
 
 License:        LGPLv2+ with exceptions and BSD
@@ -39,8 +39,14 @@ make install
 %files
 %doc CHANGES.txt COPYRIGHT.txt INRIA-DISCLAIMER.txt INSTALL.txt LICENSE-Tywith.txt LICENSE.txt README.md THIRD-PARTY.txt
 %{_libdir}/ocaml/type_conv
+%exclude %{_libdir}/ocaml/type_conv/*.annot
+%exclude %{_libdir}/ocaml/type_conv/*.cmt
+%exclude %{_libdir}/ocaml/type_conv/*.cmti
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 111.13.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Wed Jul 16 2014 David Scott <dave.scott@citrix.com> - 111.13.00-1
 - Updated to 111.13.00 for Mirage compatibility
 

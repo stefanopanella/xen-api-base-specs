@@ -3,7 +3,7 @@
 
 Name:           ocaml-react
 Version:        1.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OCaml framework for Functional Reactive Programming (FRP)
 License:        BSD
 URL:            http://erratique.ch/software/react
@@ -53,6 +53,9 @@ cp _build/pkg/META _build/src/react.a _build/src/react.cma _build/src/react.cmi 
 %exclude %{_libdir}/ocaml/react/*.cmxa
 %exclude %{_libdir}/ocaml/react/*.cmx
 %exclude %{_libdir}/ocaml/react/*.mli
+%exclude %{_libdir}/ocaml/react/*.annot
+%exclude %{_libdir}/ocaml/react/*.cmt
+%exclude %{_libdir}/ocaml/react/*.cmti
 
 %files devel
 %{_libdir}/ocaml/react/*.a
@@ -61,6 +64,9 @@ cp _build/pkg/META _build/src/react.a _build/src/react.cma _build/src/react.cmi 
 %{_libdir}/ocaml/react/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.1.0-3
+- Remove *.cmt, *.cmti and *.annot
+
 * Sat Jun  7 2014 David Scott <dave.scott@citrix.com> - 1.1.0-2
 - Update for 1.1.0
 

@@ -2,7 +2,7 @@
 
 Name:           ocaml-cstruct
 Version:        1.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Read and write low-level C-style structures in OCaml
 License:        ISC
 URL:            https://github.com/mirage/ocaml-cstruct
@@ -53,6 +53,9 @@ ocaml setup.ml -install DESTDIR=%{buildroot}
 %exclude %{_libdir}/ocaml/cstruct/*.mli
 %{_libdir}/ocaml/stublibs/dllcstruct_stubs.so
 %{_libdir}/ocaml/stublibs/dllcstruct_stubs.so.owner
+%exclude %{_libdir}/ocaml/cstruct/*.annot
+%exclude %{_libdir}/ocaml/cstruct/*.cmt
+%exclude %{_libdir}/ocaml/cstruct/*.cmti
 
 %files devel
 %{_libdir}/ocaml/cstruct/*.a
@@ -61,6 +64,9 @@ ocaml setup.ml -install DESTDIR=%{buildroot}
 %{_libdir}/ocaml/cstruct/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.4.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 28 2014 David Scott <dave.scott@citrix.com> - 1.4.0-1
 - Update to 1.4.0
 

@@ -1,6 +1,6 @@
 Name:           ocaml-cmdliner
 Version:        0.9.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Declarative definition of commandline interfaces for OCaml
 License:        BSD3
 URL:            http://erratique.ch/software/cmdliner
@@ -46,6 +46,9 @@ cp _build/src/cmdliner.a _build/src/cmdliner.cma _build/src/cmdliner.cmi _build/
 %exclude %{_libdir}/ocaml/cmdliner/*.cmxa
 %exclude %{_libdir}/ocaml/cmdliner/*.cmx
 %exclude %{_libdir}/ocaml/cmdliner/*.mli
+%exclude %{_libdir}/ocaml/cmdliner/*.annot
+%exclude %{_libdir}/ocaml/cmdliner/*.cmt
+%exclude %{_libdir}/ocaml/cmdliner/*.cmti
 
 %files devel
 %{_libdir}/ocaml/cmdliner/*.a
@@ -54,6 +57,9 @@ cp _build/src/cmdliner.a _build/src/cmdliner.cma _build/src/cmdliner.cmi _build/
 %{_libdir}/ocaml/cmdliner/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.9.5-3
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Apr 7 2015 Euan Harris <euan.harris@citrix.com> - 0.9.5-2
 - Switch back to GitHub mirror
 

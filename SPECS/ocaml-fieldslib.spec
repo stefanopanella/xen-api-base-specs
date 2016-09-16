@@ -2,7 +2,7 @@
 
 Name:           ocaml-fieldslib
 Version:        109.20.03
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OCaml record fields as first class values
 
 Group:          Development/Libraries
@@ -54,6 +54,9 @@ make install
 %exclude %{_libdir}/ocaml/fieldslib/*.cmxa
 %exclude %{_libdir}/ocaml/fieldslib/*.cmx
 %exclude %{_libdir}/ocaml/fieldslib/*.mli
+%exclude %{_libdir}/ocaml/fieldslib/*.annot
+%exclude %{_libdir}/ocaml/fieldslib/*.cmt
+%exclude %{_libdir}/ocaml/fieldslib/*.cmti
 
 %files devel
 %{_libdir}/ocaml/fieldslib/*.a
@@ -62,6 +65,9 @@ make install
 %{_libdir}/ocaml/fieldslib/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 109.20.03-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue May 6 2014 Jon Ludlam <jonathan.ludlam@citrix.com> - 109.20.00-1
 - Initial package
 

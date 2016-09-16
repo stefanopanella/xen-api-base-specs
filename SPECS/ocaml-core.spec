@@ -3,7 +3,7 @@
 
 Name:           ocaml-core
 Version:        112.35.01
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        System-independent part of Jane Street's Core.
 
 Group:          Development/Libraries
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %exclude %{_libdir}/ocaml/core/*.ml
 %exclude %{_libdir}/ocaml/core/*.mli
+%exclude %{_libdir}/ocaml/core/*.annot
+%exclude %{_libdir}/ocaml/core/*.cmt
+%exclude %{_libdir}/ocaml/core/*.cmti
 %{_libdir}/ocaml/stublibs/*.so
 %{_libdir}/ocaml/stublibs/*.so.owner
 
@@ -132,6 +135,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/core/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 112.35.01-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Jan 22 2016 Jon Ludlam <jonathan.ludlam@citrix.com> - 112.35.01-1
 - Update to 112.35.01
 

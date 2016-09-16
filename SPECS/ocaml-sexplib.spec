@@ -2,7 +2,7 @@
 
 Name:           ocaml-sexplib
 Version:        112.35.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Convert values to and from s-expressions in OCaml
 
 License:        LGPLv2+ with exceptions and BSD
@@ -54,15 +54,24 @@ make install
 %exclude %{_libdir}/ocaml/sexplib/*.cmxa
 %exclude %{_libdir}/ocaml/sexplib/*.cmx
 %exclude %{_libdir}/ocaml/sexplib/*.mli
+%exclude %{_libdir}/ocaml/sexplib/*.annot
+%exclude %{_libdir}/ocaml/sexplib/*.cmt
+%exclude %{_libdir}/ocaml/sexplib/*.cmti
 %{_libdir}/ocaml/sexplib_num
 %exclude %{_libdir}/ocaml/sexplib_num/*.a
 %exclude %{_libdir}/ocaml/sexplib_num/*.cmxa
 %exclude %{_libdir}/ocaml/sexplib_num/*.cmx
 %exclude %{_libdir}/ocaml/sexplib_num/*.mli
+%exclude %{_libdir}/ocaml/sexplib_num/*.annot
+%exclude %{_libdir}/ocaml/sexplib_num/*.cmt
+%exclude %{_libdir}/ocaml/sexplib_num/*.cmti
 %{_libdir}/ocaml/sexplib_unix
 %exclude %{_libdir}/ocaml/sexplib_unix/*.a
 %exclude %{_libdir}/ocaml/sexplib_unix/*.cmxa
 %exclude %{_libdir}/ocaml/sexplib_unix/*.cmx
+%exclude %{_libdir}/ocaml/sexplib_unix/*.annot
+%exclude %{_libdir}/ocaml/sexplib_unix/*.cmt
+%exclude %{_libdir}/ocaml/sexplib_unix/*.cmti
 
 %files devel
 %{_libdir}/ocaml/sexplib/*.a
@@ -78,6 +87,9 @@ make install
 %{_libdir}/ocaml/sexplib_unix/*.cmxa
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 112.35.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Jan 22 2016 Jon Ludlam <jonathan.ludlam@citrix.com> - 112.35.00-1
 - Update to 112.35.00
 

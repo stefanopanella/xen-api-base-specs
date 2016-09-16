@@ -3,7 +3,7 @@
 
 Name:           ocaml-pa-structural-sexp
 Version:        112.35.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Jane Street's pa_structural_sexp
 
 Group:          Development/Libraries
@@ -82,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_libdir}/ocaml/pa_structural_sexp/*.cmxa
 %endif
 %exclude %{_libdir}/ocaml/pa_structural_sexp/*.mli
+%exclude %{_libdir}/ocaml/pa_structural_sexp/*.annot
+%exclude %{_libdir}/ocaml/pa_structural_sexp/*.cmt
+%exclude %{_libdir}/ocaml/pa_structural_sexp/*.cmti
 
 
 %files devel
@@ -94,5 +97,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/pa_structural_sexp/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 112.35.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Nov 12 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 112.35.00-1
 - Initial package

@@ -2,7 +2,7 @@
 
 Name:           ocaml-ssl
 Version:        0.5.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Use OpenSSL from OCaml
 License:        LGPL
 URL:            http://downloads.sourceforge.net/project/savonet/ocaml-ssl
@@ -49,6 +49,9 @@ make install DESTDIR=%{buildroot}
 %exclude %{_libdir}/ocaml/ssl/*.cmxa
 %exclude %{_libdir}/ocaml/ssl/*.cmx
 %exclude %{_libdir}/ocaml/ssl/*.mli
+%exclude %{_libdir}/ocaml/ssl/*.annot
+%exclude %{_libdir}/ocaml/ssl/*.cmt
+%exclude %{_libdir}/ocaml/ssl/*.cmti
 %{_libdir}/ocaml/stublibs/dllssl_stubs.so
 %{_libdir}/ocaml/stublibs/dllssl_stubs.so.owner
 %{_libdir}/ocaml/stublibs/dllssl_threads_stubs.so
@@ -61,6 +64,9 @@ make install DESTDIR=%{buildroot}
 %{_libdir}/ocaml/ssl/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.5.2-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue May 24 2016 Phus Lu <phus.lu@citrix.com> - 0.5.2-1
 - Upgrade to ocaml-ssl-0.5.2 for TLSv1.2
 

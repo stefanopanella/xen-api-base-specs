@@ -1,6 +1,6 @@
 Name:           ocaml-flock
 Version:        1.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OCaml bindings to flock(2)
 License:        LGPL2.1 + OCaml linking exception
 URL:            https://github.com/simonjbeaumont/ocaml-flock
@@ -52,8 +52,14 @@ make test
 %exclude %{_libdir}/ocaml/flock/*.a
 %exclude %{_libdir}/ocaml/flock/*.cmxa
 %exclude %{_libdir}/ocaml/flock/*.mli
+%exclude %{_libdir}/ocaml/flock/*.annot
+%exclude %{_libdir}/ocaml/flock/*.cmt
+%exclude %{_libdir}/ocaml/flock/*.cmti
 %exclude %{_libdir}/ocaml/flock_bindings/*.a
 %exclude %{_libdir}/ocaml/flock_bindings/*.cmxa
+%exclude %{_libdir}/ocaml/flock_bindings/*.annot
+%exclude %{_libdir}/ocaml/flock_bindings/*.cmt
+%exclude %{_libdir}/ocaml/flock_bindings/*.cmti
 
 %files devel
 %{_libdir}/ocaml/flock/*.a
@@ -63,5 +69,8 @@ make test
 %{_libdir}/ocaml/flock_bindings/*.cmxa
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.0.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Mon Nov 9 2015 Si Beaumont <simon.beaumont@citrix.com> - 1.0.0-1
 - Initial package

@@ -3,7 +3,7 @@
 
 Name:           ocaml-async-extra
 Version:        112.35.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Jane Street Capital's asynchronous execution library (core)
 
 Group:          Development/Libraries
@@ -99,6 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %exclude %{_libdir}/ocaml/async_extra/*.ml
 %exclude %{_libdir}/ocaml/async_extra/*.mli
+%exclude %{_libdir}/ocaml/async_extra/*.annot
+%exclude %{_libdir}/ocaml/async_extra/*.cmt
+%exclude %{_libdir}/ocaml/async_extra/*.cmti
 
 %files devel
 %defattr(-,root,root,-)
@@ -111,6 +114,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/async_extra/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 112.35.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Jan 22 2016 Jon Ludlam <jonathan.ludlam@citrix.com> - 112.35.00-1
 - Update to 112.35.00
 

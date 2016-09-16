@@ -1,6 +1,6 @@
 Name:           ocaml-uutf
 Version:        0.9.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Non-blocking streaming codec for UTF-8, UTF-16, UTF-16LE and UTF-16BE
 License:        BSD3
 URL:            http://erratique.ch/software/uutf
@@ -48,6 +48,9 @@ mkdir -p %{buildroot}%{_libdir}/ocaml/uutf
 %{_libdir}/ocaml/uutf/META
 %{_libdir}/ocaml/uutf/uutf.cmi
 %{_libdir}/ocaml/uutf/uutf.cma
+%exclude %{_libdir}/ocaml/uutf/META/*.annot
+%exclude %{_libdir}/ocaml/uutf/META/*.cmt
+%exclude %{_libdir}/ocaml/uutf/META/*.cmti
 
 %files devel
 %{_libdir}/ocaml/uutf/uutf.cmx
@@ -58,6 +61,9 @@ mkdir -p %{buildroot}%{_libdir}/ocaml/uutf
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.9.3-4
+- Remove *.cmt, *.cmti and *.annot
+
 * Mon May 19 2014 Euan Harris <euan.harris@citrix.com> - 0.9.3-3
 - Switch to GitHub mirror
 

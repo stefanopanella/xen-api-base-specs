@@ -3,7 +3,7 @@
 
 Name:           ocaml-custom-printf
 Version:        111.25.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Syntax extension for printf format strings
 
 Group:          Development/Libraries
@@ -83,6 +83,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %exclude %{_libdir}/ocaml/custom_printf/*.ml
 %exclude %{_libdir}/ocaml/custom_printf/*.mli
+%exclude %{_libdir}/ocaml/custom_printf/*.annot
+%exclude %{_libdir}/ocaml/custom_printf/*.cmt
+%exclude %{_libdir}/ocaml/custom_printf/*.cmti
 
 
 %files devel
@@ -97,6 +100,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 111.25.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 14 2014 David Scott <dave.scott@citrix.com> - 111.25.00-1
 - Update to 111.25.00
 

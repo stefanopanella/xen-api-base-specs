@@ -2,7 +2,7 @@
 
 Name:           ocaml-yojson
 Version:        1.1.6
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A JSON parser and printer for OCaml
 License:        BSD3
 URL:            http://mjambon.com/yojson.html
@@ -45,12 +45,18 @@ make install DESTDIR=%{buildroot} BINDIR=%{buildroot}/%{_bindir}
 %{_libdir}/ocaml/yojson
 %exclude %{_libdir}/ocaml/yojson/*.cmx
 %exclude %{_libdir}/ocaml/yojson/*.mli
+%exclude %{_libdir}/ocaml/yojson/*.annot
+%exclude %{_libdir}/ocaml/yojson/*.cmt
+%exclude %{_libdir}/ocaml/yojson/*.cmti
 
 %files devel
 %{_libdir}/ocaml/yojson/*.cmx
 %{_libdir}/ocaml/yojson/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.1.6-4
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 21 2014 Euan Harris <euan.harris@citrix.com> - 1.1.6-3
 - Switch to GitHub sources
 

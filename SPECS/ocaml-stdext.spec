@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:           ocaml-stdext
-Version:        1.0.0
+Version:        2.0.0
 Release:        1%{?dist}
 Summary:        Deprecated misc library functions for OCaml
 License:        LGPL
@@ -12,6 +12,7 @@ BuildRequires:  ocaml-fd-send-recv-devel
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-uuidm-devel
 BuildRequires:  ocaml-backtrace-devel
+BuildRequires:  oasis
 
 %description
 Deprecated misc library functions for OCaml.
@@ -20,7 +21,7 @@ Deprecated misc library functions for OCaml.
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
 Requires:       ocaml-fd-send-recv-devel%{?_isa}
-BuildRequires:  ocaml-uuidm-devel%{?_isa}
+Requires:       ocaml-uuidm-devel%{?_isa}
 Requires:       ocaml-backtrace-devel%{?_isa}
 
 %description    devel
@@ -31,6 +32,7 @@ developing applications that use %{name}.
 %setup -q -n stdext-%{version}
 
 %build
+oasis setup
 make
 
 %install
@@ -42,6 +44,7 @@ make install DESTDIR=${buildroot}
 
 %files
 %doc README.md
+%doc ChangeLog
 %{_libdir}/ocaml/stdext
 %exclude %{_libdir}/ocaml/stdext/*.a
 %exclude %{_libdir}/ocaml/stdext/*.cmxa
@@ -57,6 +60,9 @@ make install DESTDIR=${buildroot}
 %{_libdir}/ocaml/stdext/*.mli
 
 %changelog
+* Wed Jun 22 2016 Jon Ludlam <jonathan.ludlam@citrix.com> - 2.0.0-1
+- Update to 2.0.0
+
 * Wed Apr 20 2016 Euan Harris <euan.harris@citrix.com> - 1.0.0-1
 - Update to 1.0.0
 

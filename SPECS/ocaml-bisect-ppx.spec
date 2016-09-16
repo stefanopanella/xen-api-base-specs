@@ -2,7 +2,7 @@
 
 Name:           ocaml-bisect-ppx
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A tool for code coverage profiling
 License:        GPLv3
 URL:            https://github.com/aantron/bisect_ppx
@@ -41,6 +41,9 @@ make install
 %exclude %{_libdir}/ocaml/bisect_ppx/*.cmxa
 %exclude %{_libdir}/ocaml/bisect_ppx/*.cmx
 # %exclude %{_libdir}/ocaml/bisect_ppx/*.mli
+%exclude %{_libdir}/ocaml/bisect_ppx/*.annot
+%exclude %{_libdir}/ocaml/bisect_ppx/*.cmt
+%exclude %{_libdir}/ocaml/bisect_ppx/*.cmti
 
 %files devel
 %{_libdir}/ocaml/bisect_ppx/*.a
@@ -49,5 +52,8 @@ make install
 # %{_libdir}/ocaml/bisect_ppx/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.1.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Wed May 11 2016 Christian Lindig <christian.lindig@citrix.com> - 1.1.0-1
 - Initial package

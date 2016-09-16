@@ -2,7 +2,7 @@
 
 Name:           ocaml-uuidm
 Version:        0.9.5
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Universally Unique IDentifiers (UUIDs) for OCaml
 License:        BSD3
 URL:            http://erratique.ch/software/uuidm
@@ -47,6 +47,9 @@ rm -f %{buildroot}/%{_libdir}/ocaml/usr/local/bin/uuidtrip
 %exclude %{_libdir}/ocaml/uuidm/*.cmxa
 %exclude %{_libdir}/ocaml/uuidm/*.cmx
 %exclude %{_libdir}/ocaml/uuidm/*.mli
+%exclude %{_libdir}/ocaml/uuidm/*.annot
+%exclude %{_libdir}/ocaml/uuidm/*.cmt
+%exclude %{_libdir}/ocaml/uuidm/*.cmti
 
 %files devel
 %{_libdir}/ocaml/uuidm/*.a
@@ -55,6 +58,9 @@ rm -f %{buildroot}/%{_libdir}/ocaml/usr/local/bin/uuidtrip
 %{_libdir}/ocaml/uuidm/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.9.5-4
+- Remove *.cmt, *.cmti and *.annot
+
 * Mon Jun 02 2014 Euan Harris <euan.harris@citrix.com> - 0.9.5-3
 - Split files correctly between base and devel packages
 

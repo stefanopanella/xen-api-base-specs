@@ -3,7 +3,7 @@
 
 Name:           ocaml-comparelib
 Version:        109.60.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Syntax extension that derives comparison functions from type representations.
 
 Group:          Development/Libraries
@@ -81,6 +81,9 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_libdir}/ocaml/comparelib/*.cmxa
 %endif
 %exclude %{_libdir}/ocaml/comparelib/*.ml
+%exclude %{_libdir}/ocaml/comparelib/*.annot
+%exclude %{_libdir}/ocaml/comparelib/*.cmt
+%exclude %{_libdir}/ocaml/comparelib/*.cmti
 
 
 %files devel
@@ -94,6 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 109.60.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 14 2014 David Scott <dave.scott@citrix.com> - 109.60.00-1
 - Update to 109.60.00
 

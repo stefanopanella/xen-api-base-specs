@@ -1,6 +1,6 @@
 Name:           ocaml-stringext
 Version:        0.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        String manipulation functions
 License:        Unknown 
 Group:          Development/Libraries
@@ -42,6 +42,9 @@ ocaml setup.ml -install
 %exclude %{_libdir}/ocaml/stringext/*.cmxa
 %exclude %{_libdir}/ocaml/stringext/*.cmx
 %exclude %{_libdir}/ocaml/stringext/*.mli
+%exclude %{_libdir}/ocaml/stringext/*.annot
+%exclude %{_libdir}/ocaml/stringext/*.cmt
+%exclude %{_libdir}/ocaml/stringext/*.cmti
 
 
 %files devel
@@ -51,6 +54,9 @@ ocaml setup.ml -install
 %{_libdir}/ocaml/stringext/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.0.1-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri May 2 2014 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.0.1-1
 - Initial package
 

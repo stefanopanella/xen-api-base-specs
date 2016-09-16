@@ -1,6 +1,6 @@
 Name:           ocaml-conduit
 Version:        0.8.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OCaml network conduit library
 License:        Unknown 
 Group:          Development/Libraries
@@ -57,6 +57,9 @@ make install
 %exclude %{_libdir}/ocaml/conduit/*.a
 %exclude %{_libdir}/ocaml/conduit/*.cmxa
 %exclude %{_libdir}/ocaml/conduit/*.cmx
+%exclude %{_libdir}/ocaml/conduit/*.annot
+%exclude %{_libdir}/ocaml/conduit/*.cmt
+%exclude %{_libdir}/ocaml/conduit/*.cmti
 
 
 %files devel
@@ -65,6 +68,9 @@ make install
 %{_libdir}/ocaml/conduit/*.cmxa
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.8.2-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Apr 24 2015 David Scott <dave.scott@citrix.com> - 0.8.2-1
 - Update to 0.8.2
 - Backport fix for Unix domain sockets

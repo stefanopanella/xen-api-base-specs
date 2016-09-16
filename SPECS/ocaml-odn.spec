@@ -1,6 +1,6 @@
 Name:		ocaml-odn
 Version:	0.0.11
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Dump OCaml data structures using OCaml data notation
 
 License:	LGPL
@@ -22,7 +22,7 @@ like OASIS.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
-BuildRequires:	ocaml-type-conv%{_isa} >= 108.07.01
+Requires:	ocaml-type-conv%{?_isa} >= 108.07.01
 
 %description    devel
 The %{name}-devel package contains libraries and signature files for
@@ -47,6 +47,9 @@ make install
 %exclude %{_libdir}/ocaml/odn/*.a
 %exclude %{_libdir}/ocaml/odn/*.cmxa
 %exclude %{_libdir}/ocaml/odn/*.cmx
+%exclude %{_libdir}/ocaml/odn/*.annot
+%exclude %{_libdir}/ocaml/odn/*.cmt
+%exclude %{_libdir}/ocaml/odn/*.cmti
 
 %files devel
 %{_libdir}/ocaml/odn/*.a
@@ -54,6 +57,9 @@ make install
 %{_libdir}/ocaml/odn/*.cmxa
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.0.11-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Mar 25 2014 Euan Harris <euan.harris@citrix.com> - 0.0.11-1
 - Initial package
 

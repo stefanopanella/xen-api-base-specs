@@ -1,6 +1,6 @@
 Name:           ocaml-tar
 Version:        0.2.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OCaml parser and printer for tar-format data
 License:        LGPL2.1 + OCaml linking exception
 URL:            https://github.com/mirage/ocaml-tar
@@ -47,6 +47,9 @@ ocaml setup.ml -install
 %exclude %{_libdir}/ocaml/tar/*.cmxa
 %exclude %{_libdir}/ocaml/tar/*.cmx
 %exclude %{_libdir}/ocaml/tar/*.mli
+%exclude %{_libdir}/ocaml/tar/*.annot
+%exclude %{_libdir}/ocaml/tar/*.cmt
+%exclude %{_libdir}/ocaml/tar/*.cmti
 
 %files devel
 %{_libdir}/ocaml/tar/*.a
@@ -55,6 +58,9 @@ ocaml setup.ml -install
 %{_libdir}/ocaml/tar/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.2.1-3
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri May 30 2014 Euan Harris <euan.harris@citrix.com> - 0.2.1-2
 - Split files correctly between base and devel packages
 

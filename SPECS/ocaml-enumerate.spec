@@ -2,7 +2,7 @@
 
 Name:           ocaml-enumerate
 Version:        111.08.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Quotation expanders for enumerating finite types.
 
 Group:          Development/Libraries
@@ -55,6 +55,9 @@ make install
 %exclude %{_libdir}/ocaml/enumerate/*.cmxa
 %exclude %{_libdir}/ocaml/enumerate/*.cmx
 %exclude %{_libdir}/ocaml/enumerate/*.mli
+%exclude %{_libdir}/ocaml/enumerate/*.annot
+%exclude %{_libdir}/ocaml/enumerate/*.cmt
+%exclude %{_libdir}/ocaml/enumerate/*.cmti
 
 %files devel
 %{_libdir}/ocaml/enumerate/*.a
@@ -63,6 +66,9 @@ make install
 %{_libdir}/ocaml/enumerate/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 111.08.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 14 2014 David Scott <dave.scott@citrix.com> - 111.08.00-1
 - Initial package
 

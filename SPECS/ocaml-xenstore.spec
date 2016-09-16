@@ -1,12 +1,12 @@
 %global debug_package %{nil}
 
 Name:           ocaml-xenstore
-Version:        1.2.4
+Version:        1.2.6
 Release:        2%{?dist}
 Summary:        Xenstore protocol implementation in OCaml
 License:        LGPL
 URL:            https://github.com/mirage/ocaml-xenstore
-Source0:        https://github.com/mirage/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/mirage/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-cstruct-devel
@@ -51,6 +51,9 @@ make install
 %exclude %{_libdir}/ocaml/xenstore/*.cmxa
 %exclude %{_libdir}/ocaml/xenstore/*.cmx
 %exclude %{_libdir}/ocaml/xenstore/*.mli
+%exclude %{_libdir}/ocaml/xenstore/*.annot
+%exclude %{_libdir}/ocaml/xenstore/*.cmt
+%exclude %{_libdir}/ocaml/xenstore/*.cmti
 
 %files devel
 %{_libdir}/ocaml/xenstore/*.a
@@ -59,6 +62,12 @@ make install
 %{_libdir}/ocaml/xenstore/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.2.6-2
+- Remove *.cmt, *.cmti and *.annot
+
+* Mon Jun 27 2016 Euan Harris <euan.harris@citrix.com> - 1.2.6-1
+- Update to 1.2.6
+
 * Mon Jun  2 2014 Euan Harris <euan.harris@citrix.com> - 1.2.4-2
 - Split files correctly between base and devel packages
 

@@ -3,7 +3,7 @@
 
 Name:           ocaml-ounit
 Version:        2.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Unit test framework for OCaml
 
 License:        MIT
@@ -57,6 +57,9 @@ rm -rf $RPM_BUILD_ROOT/usr/local/share/doc
 %exclude %{_libdir}/ocaml/oUnit/*.cmxa
 %endif
 %exclude %{_libdir}/ocaml/oUnit/*.mli
+%exclude %{_libdir}/ocaml/oUnit/*.annot
+%exclude %{_libdir}/ocaml/oUnit/*.cmt
+%exclude %{_libdir}/ocaml/oUnit/*.cmti
 
 %files devel
 %doc LICENSE.txt README.txt
@@ -68,6 +71,9 @@ rm -rf $RPM_BUILD_ROOT/usr/local/share/doc
 %{_libdir}/ocaml/oUnit/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 2.0.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Mar 25 2014 Euan Harris <euan.harris@citrix.com> - 2.0.0-1
 - Update to version 2.0.0
 

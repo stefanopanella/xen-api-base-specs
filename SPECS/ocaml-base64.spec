@@ -2,7 +2,7 @@
 
 Name:           ocaml-base64
 Version:        2.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Base64 encoding and decoding library
 License:        ISC
 URL:            https://github.com/mirage/ocaml-base64
@@ -49,6 +49,9 @@ ocaml setup.ml -install
 %exclude %{_libdir}/ocaml/base64/*.cmxa
 %exclude %{_libdir}/ocaml/base64/*.cmx
 %exclude %{_libdir}/ocaml/base64/*.mli
+%exclude %{_libdir}/ocaml/base64/*.annot
+%exclude %{_libdir}/ocaml/base64/*.cmt
+%exclude %{_libdir}/ocaml/base64/*.cmti
 
 %files devel
 %{_libdir}/ocaml/base64/*.a
@@ -57,5 +60,8 @@ ocaml setup.ml -install
 %{_libdir}/ocaml/base64/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 2.0.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Apr  2 2015 David Scott <dave.scott@citrix.com> - 2.0.0-1
 - Initial package

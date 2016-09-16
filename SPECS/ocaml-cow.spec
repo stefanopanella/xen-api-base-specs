@@ -1,6 +1,6 @@
 Name:           ocaml-cow
 Version:        1.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        XML, JSON, HTML, CSS, and Markdown syntax and libraries
 License:        ISC
 URL:            https://github.com/mirage/ocaml-cow
@@ -73,6 +73,9 @@ make install
 %exclude %{_libdir}/ocaml/cow/*.a
 %exclude %{_libdir}/ocaml/cow/*.cmxa
 %exclude %{_libdir}/ocaml/cow/*.mli
+%exclude %{_libdir}/ocaml/cow/*.annot
+%exclude %{_libdir}/ocaml/cow/*.cmt
+%exclude %{_libdir}/ocaml/cow/*.cmti
 
 %files devel
 %{_libdir}/ocaml/cow/*.a
@@ -80,5 +83,8 @@ make install
 %{_libdir}/ocaml/cow/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.0.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Oct 16 2014 David Scott <dave.scott@citrix.com> - 1.0.0-1
 - Initial package

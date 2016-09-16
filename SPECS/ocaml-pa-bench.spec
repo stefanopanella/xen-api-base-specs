@@ -3,7 +3,7 @@
 
 Name:           ocaml-pa-bench
 Version:        112.06.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Syntax extension for inline benchmarks.
 
 Group:          Development/Libraries
@@ -81,6 +81,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %exclude %{_libdir}/ocaml/pa_bench/*.ml
 %exclude %{_libdir}/ocaml/pa_bench/*.mli
+%exclude %{_libdir}/ocaml/pa_bench/*.annot
+%exclude %{_libdir}/ocaml/pa_bench/*.cmt
+%exclude %{_libdir}/ocaml/pa_bench/*.cmti
 
 
 %files devel
@@ -95,6 +98,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 112.06.00-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Tue Oct 14 2014 David Scott <dave.scott@citrix.com> - 111.28.00-1
 - Update to 111.28.00
 

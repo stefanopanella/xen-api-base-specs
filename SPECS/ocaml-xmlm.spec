@@ -1,6 +1,6 @@
 Name:           ocaml-xmlm
 Version:        1.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Streaming XML input/output for OCaml
 License:        BSD3
 URL:            http://erratique.ch/software/xmlm
@@ -49,6 +49,9 @@ cp _build/pkg/META  _build/src/xmlm.a  _build/src/xmlm.cma  _build/src/xmlm.cmi 
 %exclude %{_libdir}/ocaml/xmlm/*.cmxa
 %exclude %{_libdir}/ocaml/xmlm/*.cmx
 %exclude %{_libdir}/ocaml/xmlm/*.mli
+%exclude %{_libdir}/ocaml/xmlm/*.annot
+%exclude %{_libdir}/ocaml/xmlm/*.cmt
+%exclude %{_libdir}/ocaml/xmlm/*.cmti
 
 %files devel
 %{_libdir}/ocaml/xmlm/*.a
@@ -57,6 +60,9 @@ cp _build/pkg/META  _build/src/xmlm.a  _build/src/xmlm.cma  _build/src/xmlm.cmi 
 %{_libdir}/ocaml/xmlm/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 1.2.0-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Thu Jul 17 2014 David Scott <dave.scott@citri.com> - 1.2.0-1
 - Update to 1.2.0
 

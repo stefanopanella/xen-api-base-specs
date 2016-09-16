@@ -3,7 +3,7 @@
 
 Name:           ocaml-text
 Version:        0.8
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Library for dealing with unicode text conveniently
 
 License:        BSD
@@ -50,6 +50,9 @@ rm -rf $RPM_BUILD_ROOT/usr/local/share/doc
 %exclude %{_libdir}/ocaml/text/*.cmxa
 %exclude %{_libdir}/ocaml/text/*.cmx
 %exclude %{_libdir}/ocaml/text/*.mli
+%exclude %{_libdir}/ocaml/text/*.annot
+%exclude %{_libdir}/ocaml/text/*.cmt
+%exclude %{_libdir}/ocaml/text/*.cmti
 %{_libdir}/ocaml/stublibs/dllbigarray_stubs.so
 %{_libdir}/ocaml/stublibs/dllbigarray_stubs.so.owner
 %{_libdir}/ocaml/stublibs/dlltext_stubs.so
@@ -63,6 +66,9 @@ rm -rf $RPM_BUILD_ROOT/usr/local/share/doc
 %{_libdir}/ocaml/text/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 0.8-3
+- Remove *.cmt, *.cmti and *.annot
+
 * Fri Jan 22 2016 Jonathan Ludlam <jonathan.ludlam@citrix.com> - 0.8-1
 - Update to 0.8
 

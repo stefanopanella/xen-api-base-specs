@@ -1,6 +1,6 @@
 Name:           ocaml-ipaddr
 Version:        2.5.0
-Release:        1000%{?dist}
+Release:        1001%{?dist}
 Summary:        Pure OCaml parsers and printers for IP addresses
 License:        ISC
 URL:            https://github.com/mirage/ocaml-ipaddr
@@ -43,6 +43,9 @@ make install
 %exclude %{_libdir}/ocaml/ipaddr/*.cmx
 %exclude %{_libdir}/ocaml/ipaddr/*.ml
 %exclude %{_libdir}/ocaml/ipaddr/*.mli
+%exclude %{_libdir}/ocaml/ipaddr/*.annot
+%exclude %{_libdir}/ocaml/ipaddr/*.cmt
+%exclude %{_libdir}/ocaml/ipaddr/*.cmti
 
 %files devel
 %{_libdir}/ocaml/ipaddr/*.a
@@ -51,6 +54,9 @@ make install
 %{_libdir}/ocaml/ipaddr/*.mli
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 2.5.0-1001
+- Remove *.cmt, *.cmti and *.annot
+
 * Sat Jul 19 2014 David Scott <dave.scott@citrix.com> - 2.5.0-1000
 - Update to 2.5.0; override upstream package
 

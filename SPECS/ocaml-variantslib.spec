@@ -3,7 +3,7 @@
 
 Name:           ocaml-variantslib
 Version:        109.15.02
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OCaml variants as first class values
 
 Group:          Development/Libraries
@@ -81,6 +81,9 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_libdir}/ocaml/variantslib/*.cmxa
 %endif
 %exclude %{_libdir}/ocaml/variantslib/*.mli
+%exclude %{_libdir}/ocaml/variantslib/*.annot
+%exclude %{_libdir}/ocaml/variantslib/*.cmt
+%exclude %{_libdir}/ocaml/variantslib/*.cmti
 
 
 %files devel
@@ -94,5 +97,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 27 2016 Euan Harris <euan.harris@citrix.com> - 109.15.02-2
+- Remove *.cmt, *.cmti and *.annot
+
 * Wed Jan 01 2014 Edvard Fagerholm <edvard.fagerholm@gmail.com> - 109.15.02-1
 - Initial package for Fedora 20.
